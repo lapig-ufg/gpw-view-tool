@@ -1,7 +1,7 @@
 // Importar funções de outros arquivos
-var ui = require("users/irtharles/gpw-view-tool/ui");
-var map = require("users/irtharles/gpw-view-tool/map");
-var data = require("users/irtharles/gpw-view-tool/data");
+var ui = require("users/irtharles/gpw-view-tool:ui");
+var map = require("users/irtharles/gpw-view-tool:map");
+var data = require("users/irtharles/gpw-view-tool:data");
 
 // Importar o pacote palettes
 var palettes = require("users/gena/packages:palettes");
