@@ -5,7 +5,7 @@ var data = require("users/irtharles/gpw-view-tool:data.js");
 
 // Importar o pacote palettes
 var palettes = require("users/gena/packages:palettes");
-print(palettes)
+print(palettes.d3)
 
 /**
  * Inicializa o app.
