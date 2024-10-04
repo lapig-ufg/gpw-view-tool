@@ -1,5 +1,7 @@
 // Funções para criar a interface do usuário
 
+var map = require("users/irtharles/gpw-view-tool:map.js");
+
 /**
  * Cria o painel de controle com as opções do app.
  * @param {ui.Map} map O mapa para adicionar as camadas.
