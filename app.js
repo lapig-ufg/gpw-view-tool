@@ -5,7 +5,7 @@ var data = require("users/irtharles/gpw-view-tool:data.js");
 
 // Importar o pacote palettes
 var palettes = require("users/gena/packages:palettes");
-print(palettes.d3)
+print(palettes)
 
 /**
  * Inicializa o app.
@@ -53,7 +53,8 @@ function initializeApp() {
   );
   var legend_esa = ui.createLegend(
     "ESA WorldCover v2",
-    palettes.d3.category10,
+    ['FAFAC3','E0E081','B0B006','065106','B7BDC2',
+    '73A7D6','0986F7','3B7C81','1147DD','ffffff','ff7d00','64dcdc','111133'],
     [
       "Tree cover",
       "Shrubland",
