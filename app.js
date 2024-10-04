@@ -39,7 +39,6 @@ function initializeApp() {
 
   // Adicionar painéis ao mapa
   var mapGrid = ui.createMapGrid(MapLayer, MainPanel);
-  print(mapGrid)
   ui.root.widgets().reset([mapGrid]);
   ui.root.setLayout(ui.Panel.Layout.Flow("vertical"));
 
