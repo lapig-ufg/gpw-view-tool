@@ -1,4 +1,4 @@
-export const MAP_STYLES = {
+var MAP_STYLES = {
   "SHADES OF GREY": [
     {
       featureType: "all",
