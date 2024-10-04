@@ -19,7 +19,7 @@ function initializeApp() {
       layer.imagem,
       {
         palette: layer.palette,
-        bands: layer.bands,
+        bands: layer.bands.length > 0 ?  layer.bands: null,
       },
       layer.layerName,
       layer.visible
