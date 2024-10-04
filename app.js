@@ -12,7 +12,6 @@ var palettes = require("users/gena/packages:palettes");
 function initializeApp() {
   // Criar o mapa
   var MapLayer = map.createMap();
-  print(MapLayer)
 
   // Carregar as imagens
   var images = data.loadImages();
