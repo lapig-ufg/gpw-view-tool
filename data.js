@@ -2,81 +2,6 @@
  * @fileoverview Funções para carregar e processar dados.
  */
 
-// Dicionários de classes para cada dataset
-var gpw_dict = {
-  1: "Cultivated grassland",
-  2: "Natural/Semi-Natural grassland",
-};
-
-var esa_dict = {
-  10: "Tree cover",
-  20: "Shrubland",
-  30: "Grassland",
-  40: "Cropland",
-  50: "Built-up",
-  60: "Bare / sparse vegetation",
-  70: "Snow and ice",
-  80: "Permanent water bodies",
-  90: "Herbaceous wetland",
-  95: "Mangroves",
-  100: "Moss and lichen",
-};
-
-var glad_dict = {
-  1: "Terra Firma - True desert",
-  2: "Terra Firma - Semi-arid",
-  3: "Terra Firma - Dense short vegetation",
-  4: "Terra Firma - Tree cover",
-  5: "Wetland - Salt pan",
-  6: "Wetland - Sparse vegetation",
-  7: "Wetland - Dense short vegetation",
-  8: "Wetland - Tree cover",
-  9: "Open surface water",
-  10: "Snow/ice",
-  11: "Cropland",
-  12: "Built-up",
-  13: "Ocean",
-};
-
-var glc_fcs_dict = {
-  10: "Rainfed cropland",
-  11: "Herbaceous cover cropland",
-  12: "Tree or shrub cover (Orchard) cropland",
-  20: "Irrigated cropland",
-  51: "Open evergreen broadleaved forest",
-  52: "Closed evergreen broadleaved forest",
-  61: "Open deciduous broadleaved forest (0.15<fc<0.4)",
-  62: "Closed deciduous broadleaved forest (fc>0.4)",
-  71: "Open evergreen needle-leaved forest (0.15< fc <0.4)",
-  72: "Closed evergreen needle-leaved forest (fc >0.4)",
-  81: "Open deciduous needle-leaved forest (0.15< fc <0.4)",
-  82: "Closed deciduous needle-leaved forest (fc >0.4)",
-  91: "Open mixed leaf forest (broadleaved and needle-leaved)",
-  92: "Closed mixed leaf forest (broadleaved and needle-leaved)",
-  120: "Shrubland",
-  121: "Evergreen shrubland",
-  122: "Deciduous shrubland",
-  130: "Grassland",
-  140: "Lichens and mosses",
-  150: "Sparse vegetation (fc<0.15)",
-  152: "Sparse shrubland (fc<0.15)",
-  153: "Sparse herbaceous (fc<0.15)",
-  181: "Swamp",
-  182: "Marsh",
-  183: "Flooded flat",
-  184: "Saline",
-  185: "Mangrove",
-  186: "Salt marsh",
-  187: "Tidal flat",
-  190: "Impervious surfaces",
-  200: "Bare areas",
-  201: "Consolidated bare areas",
-  202: "Unconsolidated bare areas",
-  210: "Water body",
-  220: "Permanent ice and snow",
-  0: "Filled value",
-};
-
 /**
  * Recodifica as classes de uma imagem.
  * @param {ee.Image} image A imagem a ser recodificada.
@@ -97,11 +22,11 @@ function recodeClasses(image) {
  */
 exports.loadImages = function() {
   // Carregar a imagem do GPW 2020
-  var gpw_2020 = ee.Image('projects/gaia-319808/assets/gpw/gpw_grassland_rf-savgol-bthr_c_30m_20200101_20201231_go_epsg-4326_v1');
-  gpw_2020 = gpw_2020.updateMask(gpw_2020.gt(0));
+  var gpw2020 = ee.Image('projects/gaia-319808/assets/gpw/gpw_grassland_rf-savgol-bthr_c_30m_20200101_20201231_go_epsg-4326_v1');
+  gpw2020 = gpw2020.updateMask(gpw2020.gt(0));
 
   // Carregar a imagem do ESA WorldCover v2
-  var worldCover_v2 = ee.ImageCollection('ESA/WorldCover/v200').first();
+  var worldCoverV2 = ee.ImageCollection('ESA/WorldCover/v200').first();
 
   // Carregar a imagem do GLAD GLCLU 2020
   var landmask = ee.Image("projects/glad/OceanMask").lte(1); 
@@ -141,12 +66,12 @@ exports.loadImages = function() {
     .mosaic()
     .select('b21')
     
-  var glcfcs_recode = ee.Image(recodeClasses(GLC_FCS30D))
+  var glcfcsRecode = ee.Image(recodeClasses(GLC_FCS30D))
   
   return {
-    gpw_2020: gpw_2020,
-    worldCover_v2: worldCover_v2,
+    gpw2020: gpw2020,
+    worldCoverV2: worldCoverV2,
     GLCLU2020: GLCLU2020,
-    glcfcs_recode: glcfcs_recode
+    glcfcsRecode: glcfcsRecode
   };
 }
