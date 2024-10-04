@@ -236,3 +236,5 @@ var MAP_STYLES = {
     },
   ],
 };
+
+exports.MAP_STYLES = MAP_STYLES;
