@@ -4,7 +4,6 @@ var map = require("users/irtharles/gpw-view-tool:map.js");
 var layers = require("users/irtharles/gpw-view-tool:layers.js");
 
 // Carregar as imagens
-var images = data.loadImages();
 var LAYERS = layers.LAYERS;
 
 /**

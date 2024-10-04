@@ -17,10 +17,11 @@ exports.createControlPanel = function(map) {
         image: logo,
         params: { bands: ['b1', 'b2', 'b3'], min: 0, max: 255 },
         style: {
-            width: '220px',
-            height: '35px',
-            margin: '0px 0px 6px 25%'
-        }
+          width: '220px',
+          height: '35px',
+          margin: '0 auto 6px auto',
+          display: 'block'
+      }
     });
 
     var labelAppTittle = ui.Label('Global Pasture Watch Comparison Toolkit (GPW-CT) by LAPIG');
