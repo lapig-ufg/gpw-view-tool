@@ -18,7 +18,7 @@ exports.createControlPanel = function(map) {
         params: { bands: ['b1', 'b2', 'b3'], min: 0, max: 255 },
         style: {
             width: '240px',
-            height: '4px',
+            height: '40px',
             margin: '0px 0px 6px 25%'
         }
     });
