@@ -1,5 +1,5 @@
 // Importar funções de outros arquivos
-var ui = require("users/irtharles/gpw-view-tool:ui.js");
+var customUi = require("users/irtharles/gpw-view-tool:ui.js");
 var map = require("users/irtharles/gpw-view-tool:map.js");
 var layers = require("users/irtharles/gpw-view-tool:layers.js");
 
@@ -27,15 +27,15 @@ function initializeApp() {
   });
 
   // Criar o painel de controle
-  var MainPanel = ui.createControlPanel(MapLayer);
+  var MainPanel = customUi.createControlPanel(MapLayer);
 
   // Criar as legendas
   var legends = LAYERS.map(function (layer) {
-    return ui.createLegend(layer.layerName, layer.palette, layer.classNames);
+    return customUi.createLegend(layer.layerName, layer.palette, layer.classNames);
   });
 
   // Adicionar legendas ao painel
-  MainPanel.add(ui.createLegendPanel(legends));
+  MainPanel.add(customUi.createLegendPanel(legends));
 
   // Adicionar painéis ao mapa
   var mapGrid = ui.createMapGrid(MapLayer, MainPanel);
