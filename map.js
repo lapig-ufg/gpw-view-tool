@@ -2,7 +2,7 @@
  * @fileoverview Funções relacionadas ao mapa.
  */
 
-var style = require('users/irtharles/gpw-view-tool/ui/style');
+var style = require('users/irtharles/gpw-view-tool/style');
 // Dicionários de classes para cada dataset (movidos de data.js)
 var gpw_dict = {
   1: 'Cultivated grassland',
