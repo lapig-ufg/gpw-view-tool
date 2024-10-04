@@ -48,4 +48,4 @@ function initializeApp() {
 }
 
 // Inicializar o app
-initializeApp();
+setTimeout(initializeApp, 1000);
