@@ -1,6 +1,6 @@
 // Funções para criar a interface do usuário
 
-var map = require("users/irtharles/gpw-view-tool:map.js");
+var _map = require("users/irtharles/gpw-view-tool:map.js");
 
 /**
  * Cria o painel de controle com as opções do app.
@@ -101,14 +101,14 @@ exports.createControlPanel = function(map) {
     });
   
     var select_regions = ui.Select({
-      items: Object.keys(map.core_regions),
+      items: Object.keys(_map.core_regions),
       value: 'Cocalinho, Mato Grosso, Brazil'
     });
   
     var button_region = ui.Button({
       label: 'Center to region',
       onClick: function() {
-        var coords = map.core_regions[select_regions.getValue()];
+        var coords = _map.core_regions[select_regions.getValue()];
         map.setCenter(coords[0], coords[1], coords[2]);
       }
     });
