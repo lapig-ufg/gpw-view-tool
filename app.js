@@ -38,7 +38,7 @@ function initializeApp() {
   MainPanel.add(customUi.createLegendPanel(legends));
 
   // Adicionar painéis ao mapa
-  var mapGrid = ui.createMapGrid(MapLayer, MainPanel);
+  var mapGrid = customUi.createMapGrid(MapLayer, MainPanel);
   ui.root.clear();
   ui.root.add(mapGrid);
   ui.root.setLayout(ui.Panel.Layout.Flow("vertical"));
