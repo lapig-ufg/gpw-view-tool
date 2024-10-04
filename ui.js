@@ -6,7 +6,7 @@
  * @return {ui.Panel} O painel de controle.
  */
 exports.createControlPanel = function(map) {
-    // Criar widgetsu
+    // Criar widget
     var logo = ee.Image("projects/ee-vieiramesquita/assets/logos/Lapig_logo");
   
     var branding = ui.Thumbnail({
