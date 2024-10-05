@@ -225,7 +225,7 @@ exports.createMapGrid = function (map, panel,  histogramPanel) {
       layout: ui.Panel.Layout.Flow('vertical'),
       style: {
         stretch: 'both',
-        width: '100%',
+        width: '78%',
         height: '100%',
       },
     });
