@@ -57,7 +57,7 @@ exports.createControlPanel = function (map) {
         var opacity = value / 100.0;
         map.layers().get(index).setOpacity(opacity);
       },
-      style: { width: "100%" },
+      style: { width: "95%" },
     });
 
     // Criar painel para cada camada (checkbox + slider)
