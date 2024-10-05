@@ -130,26 +130,15 @@ function initializeApp() {
   });
   mainPanel.add(customUi.createLegendPanel(legends));
 
-  // Adicionar painel ao layout do mapa
-  var mapGrid = customUi.createMapGrid(mapLayer, mainPanel);
-
   // Criar o painel de histogramas
   var histogramPanel = createHistogramPanel();
 
-  // Criar um painel principal que contém o mapGrid e o histogramPanel
-  var mainContainer = ui.Panel({
-    widgets: [mapGrid, histogramPanel],
-    layout: ui.Panel.Layout.Flow('vertical'),
-    style: {
-      stretch: 'both',
-      width: '100%',
-      height: '100%',
-    },
-  });
+  // Adicionar painel ao layout do mapa
+  var mapGrid = customUi.createMapGrid(mapLayer, mainPanel, histogramPanel);
 
   // Limpar o ui.root e adicionar o contêiner principal
   ui.root.clear();
-  ui.root.add(mainContainer);
+  ui.root.add(mapGrid);
 
   // Adicionar o painel de inspeção ao mapa
   createInspector(mapLayer);

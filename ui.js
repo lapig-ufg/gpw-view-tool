@@ -207,7 +207,7 @@ exports.createLegendPanel = function (legends) {
     widgets: legends,
     layout: ui.Panel.Layout.Flow("vertical"),
   });
-  panel.style().set('height', '200px');
+  panel.style().set('height', '300px');
   return panel;
 };
 
@@ -217,8 +217,20 @@ exports.createLegendPanel = function (legends) {
  * @param {ui.Panel} panel O painel de controle.
  * @return {ui.Panel} O painel com o mapa e o painel de controle.
  */
-exports.createMapGrid = function (map, panel) {
-  return ui.Panel([map, panel], ui.Panel.Layout.Flow("horizontal"), {
+exports.createMapGrid = function (map, panel,  histogramPanel) {
+
+    // Criar um painel principal que contém o mapGrid e o histogramPanel
+    var mapContainer = ui.Panel({
+      widgets: [map, histogramPanel],
+      layout: ui.Panel.Layout.Flow('vertical'),
+      style: {
+        stretch: 'both',
+        width: '100%',
+        height: '100%',
+      },
+    });
+
+  return ui.Panel([mapContainer, panel], ui.Panel.Layout.Flow("horizontal"), {
     stretch: "both",
     height: "100%",
     width: "100%",
