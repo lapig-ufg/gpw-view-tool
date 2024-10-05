@@ -135,9 +135,9 @@ function createInspector(mapLayer, histogramPanel) {
  */
 function createHistogramPanel() {
   var histogramPanel = ui.Panel({
-    layout: ui.Panel.Layout.Flow('vertical'),
+    layout: ui.Panel.Layout.Flow('horizontal'),
     style: {
-      width: '100%',
+      width: '78%',
       padding: '10px',
       backgroundColor: 'rgba(255, 255, 255, 0.9)',
     },
