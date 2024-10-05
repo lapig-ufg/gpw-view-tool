@@ -86,13 +86,13 @@ exports.createControlPanel = function (map) {
   );
 
   select_regions.style().set({
-    width: "100%",
+    width: "95%",
   })
 
   var button_region = ui.Button({
     label: "CENTER TO REGION",
     style: {
-      width: "100%",
+      width: "95%",
     },
     onClick: function () {
       var coords = _map.core_regions[select_regions.getValue()];
