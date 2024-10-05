@@ -206,7 +206,7 @@ exports.createLegendPanel = function (legends) {
     widgets: legends,
     layout: ui.Panel.Layout.Flow("vertical"),
   });
-  map.style().set('height', '80vh');
+  panel.style().set('height', '80vh');
   return panel;
 };
 
