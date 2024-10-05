@@ -94,7 +94,6 @@ exports.createControlPanel = function (map) {
     label: "CENTER TO REGION",
     style: {
       width: "100%",
-      backgroundColor: "#006400",
     },
     onClick: function () {
       var coords = _map.core_regions[select_regions.getValue()];
@@ -106,10 +105,15 @@ exports.createControlPanel = function (map) {
 
   // Criar o painel principal
   var MainPanel = ui.Panel(
-    [branding, labelAppTittle, region_Panel, labelTop].concat(layerPanels),
+    [
+        branding,
+        labelAppTittle,
+        region_Panel,
+        labelTop
+    ].concat(layerPanels),
     ui.Panel.Layout.Flow("vertical"),
     {
-      width: "25%",
+      width: "30%",
       position: "top-right",
     }
   );
@@ -136,7 +140,7 @@ exports.createLegend = function (title, palette, names) {
     value: title,
     style: {
       fontWeight: "bold",
-      fontSize: "18px",
+      fontSize: "14px",
       margin: "0 0 4px 0",
       padding: "0",
     },
