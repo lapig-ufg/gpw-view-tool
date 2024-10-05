@@ -61,7 +61,7 @@ function createInspector(mapLayer) {
       var value = sample.first().get(layer.bands[0] || "default_band");
 
       value.evaluate(function (result) {
-        print(result)
+        print(result);
         var className = layer.imagemDictDataset[result] || "Unknown";
         inspector.widgets().set(
           index + 1,
@@ -82,6 +82,30 @@ function createInspector(mapLayer) {
   });
 
   return inspector;
+}
+
+/**
+ * Cria o painel de histogramas que será adicionado ao rodapé da página.
+ * @return {ui.Panel} O painel de histogramas.
+ */
+function createHistogramPanel() {
+  var histogramPanel = ui.Panel({
+    layout: ui.Panel.Layout.Flow('vertical'),
+    style: {
+      position: 'bottom',
+      width: '100%',
+      padding: '10px',
+      backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    },
+  });
+
+  histogramPanel.add(ui.Label('Histogram Panel', { 
+    fontSize: '20px', 
+    fontWeight: 'bold', 
+    textAlign: 'center' 
+  }));
+
+  return histogramPanel;
 }
 
 /**
@@ -109,13 +133,27 @@ function initializeApp() {
 
   // Adicionar painel ao layout do mapa
   var mapGrid = customUi.createMapGrid(mapLayer, mainPanel);
+
+  // Criar o painel de histogramas
+  var histogramPanel = createHistogramPanel();
+
+  // Criar um painel principal que contém o mapGrid e o histogramPanel
+  var mainContainer = ui.Panel({
+    widgets: [mapGrid, histogramPanel],
+    layout: ui.Panel.Layout.Flow('vertical'),
+    style: {
+      stretch: 'both',
+      width: '100%',
+      height: '100%',
+    },
+  });
+
+  // Limpar o ui.root e adicionar o contêiner principal
   ui.root.clear();
-  ui.root.add(mapGrid);
-  ui.root.setLayout(ui.Panel.Layout.Flow("vertical"));
+  ui.root.add(mainContainer);
 
   // Adicionar o painel de inspeção ao mapa
   createInspector(mapLayer);
-  
 }
 
 // Inicializar o app
