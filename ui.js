@@ -48,7 +48,7 @@ exports.createControlPanel = function (map) {
     checkbox.onChange(function (checked) {
       map.layers().get(index).setShown(checked);
     });
-
+  
     // Create a slider to control the opacity
     var slider = ui.Slider({
       min: 0,
@@ -59,28 +59,28 @@ exports.createControlPanel = function (map) {
         var opacity = value / 100.0;
         map.layers().get(index).setOpacity(opacity);
       },
-      style: { width: "150px" },
+      style: { width: '150px' },
     });
-
+  
     // Create a panel for the checkbox with horizontal stretching
     var checkboxPanel = ui.Panel({
       widgets: [checkbox],
-      style: { stretch: "horizontal" },
+      style: { stretch: 'horizontal' },
     });
-
+  
     // Create a panel for the slider to keep it aligned to the right
     var sliderPanel = ui.Panel({
       widgets: [slider],
       style: {},
     });
-
+  
     // Create a layer panel to contain the checkbox and slider panels
     var layerPanel = ui.Panel({
       widgets: [checkboxPanel, sliderPanel],
-      layout: ui.Panel.Layout.Flow("horizontal"),
-      style: { width: "100%" },
+      layout: ui.Panel.Layout.Flow('horizontal'),
+      style: { width: '100%' },
     });
-
+  
     layerPanels.push(layerPanel);
   });
 
@@ -92,14 +92,16 @@ exports.createControlPanel = function (map) {
     padding: "5px 0px 0px 0%",
   });
 
-  var select_regions = ui.Select({
-    items: Object.keys(_map.core_regions),
-    value: "Cocalinho, Mato Grosso, Brazil",
-  });
+  var select_regions = ui.Select(
+    {
+      items: Object.keys(_map.core_regions),
+      value: "Cocalinho, Mato Grosso, Brazil",
+    }
+  );
 
   select_regions.style().set({
     width: "95%",
-  });
+  })
 
   var button_region = ui.Button({
     label: "CENTER TO REGION",
@@ -115,10 +117,15 @@ exports.createControlPanel = function (map) {
   var region_Panel = ui.Panel([labelRegion, select_regions, button_region]);
   region_Panel.style().set({
     width: "100%",
-  });
+  })
   // Criar o painel principal
   var MainPanel = ui.Panel(
-    [branding, labelAppTittle, region_Panel, labelTop].concat(layerPanels),
+    [
+        branding,
+        labelAppTittle,
+        region_Panel,
+        labelTop
+    ].concat(layerPanels),
     ui.Panel.Layout.Flow("vertical"),
     {
       width: "22%",
@@ -208,19 +215,6 @@ exports.createLegendPanel = function (legends) {
  * @return {ui.Panel} O painel com o mapa e o painel de controle.
  */
 exports.createMapGrid = function (map, panel) {
-  // Configurar estilos do painel do mapa
-  map.style().set({
-    stretch: "both",
-    height: "500px", // Definir um tamanho fixo para o mapa
-    width: "100%",
-  });
-
-  // Configurar estilos do painel de controle
-  panel.style().set({
-    stretch: "both",
-    width: "400px", // Definir um tamanho adequado para o painel de controle
-  });
-
   return ui.Panel([map, panel], ui.Panel.Layout.Flow("horizontal"), {
     stretch: "both",
     height: "100%",
