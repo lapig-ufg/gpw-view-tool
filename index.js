@@ -112,8 +112,8 @@ function initializeApp() {
   ui.root.setLayout(ui.Panel.Layout.Flow("vertical"));
 
   // Adicionar o painel de inspeção ao mapa
-  var inspector = createInspector(mapLayer);
-  mapLayer.add(inspector);
+  createInspector(mapLayer);
+  
 }
 
 // Inicializar o app
