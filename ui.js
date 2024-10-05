@@ -211,8 +211,14 @@ exports.createMapGrid = function (map, panel) {
   // Configurar estilos do painel do mapa
   map.style().set({
     stretch: "both",
-    height: "500px",
+    height: "500px", // Definir um tamanho fixo para o mapa
     width: "100%",
+  });
+
+  // Configurar estilos do painel de controle
+  panel.style().set({
+    stretch: "both",
+    width: "400px", // Definir um tamanho adequado para o painel de controle
   });
 
   return ui.Panel([map, panel], ui.Panel.Layout.Flow("horizontal"), {
