@@ -59,7 +59,7 @@ exports.createControlPanel = function (map) {
         var opacity = value / 100.0;
         map.layers().get(index).setOpacity(opacity);
       },
-      style: { width: '100px' },
+      style: { width: '150px' },
     });
   
     // Create a panel for the checkbox with horizontal stretching
