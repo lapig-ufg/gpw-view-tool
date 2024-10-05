@@ -217,7 +217,6 @@ exports.createLegendPanel = function (legends) {
 exports.createMapGrid = function (map, panel) {
   return ui.Panel([map, panel], ui.Panel.Layout.Flow("horizontal"), {
     stretch: "both",
-    height: "940px",
     width: "100%",
   });
 };
