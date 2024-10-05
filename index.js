@@ -128,6 +128,30 @@ function createInspector(mapLayer, histogramPanel) {
   return inspector;
 }
 
+
+/**
+ * Cria o painel de histogramas que será adicionado ao rodapé da página.
+ * @return {ui.Panel} O painel de histogramas.
+ */
+function createHistogramPanel() {
+  var histogramPanel = ui.Panel({
+    layout: ui.Panel.Layout.Flow('vertical'),
+    style: {
+      width: '100%',
+      padding: '10px',
+      backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    },
+  });
+
+  histogramPanel.add(ui.Label('Histogram Panel', { 
+    fontSize: '20px', 
+    fontWeight: 'bold', 
+    textAlign: 'center' 
+  }));
+
+  return histogramPanel;
+}
+
 /**
  * Inicializa o app.
  */
