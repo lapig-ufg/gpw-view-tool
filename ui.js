@@ -114,7 +114,7 @@ exports.createControlPanel = function (map) {
     ].concat(layerPanels),
     ui.Panel.Layout.Flow("vertical"),
     {
-      width: "20%",
+      width: "22%",
       position: "top-right",
     }
   );
