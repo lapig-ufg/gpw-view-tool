@@ -60,6 +60,7 @@ function createInspector(mapLayer) {
       var value = sample.first().get(layer.bands[0] || "default_band");
 
       value.evaluate(function (result) {
+        print(result)
         var className = layer.imagemDictDataset[result] || "Unknown";
         inspector.widgets().set(
           index + 1,
