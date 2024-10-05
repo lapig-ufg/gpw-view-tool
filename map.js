@@ -29,6 +29,6 @@ exports.createMap = function() {
   map.setCenter(5, 13, 2.4);
   map.setControlVisibility({all: true});
   map.style().set('cursor', 'crosshair');
-  map.style().set('height', '500px');
+  map.style().set('height', '80vh');
   return map;
 };

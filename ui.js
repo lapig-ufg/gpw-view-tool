@@ -202,10 +202,12 @@ var makeRow = function (color, name) {
  * @return {ui.Panel} O painel com as legendas.
  */
 exports.createLegendPanel = function (legends) {
-  return ui.Panel({
+  var panel = ui.Panel({
     widgets: legends,
     layout: ui.Panel.Layout.Flow("vertical"),
   });
+  map.style().set('height', '80vh');
+  return panel;
 };
 
 /**
