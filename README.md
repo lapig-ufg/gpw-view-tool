@@ -34,26 +34,19 @@ This Google Earth Engine app allows you to compare different pasture datasets, i
 
 The source code of the app is available in this repository. It is organized in different files to facilitate maintenance and reuse:
 
-* `app.js`: Main logic of the app.
+* `index.js`: Main logic of the app.
 * `ui.js`: Functions to create the user interface.
 * `map.js`: Functions to manage the map.
 * `data.js`: Functions to load and process the data.
+* `layers.js`: Defines the data layers, their characteristics, and visibility.
+* `styles.js`: Defines map styles, such as shades of grey and highlighted elements.
 
 **Remarks:**
 
 * This app was developed in Google Earth Engine.
 * You need a Google Earth Engine account to run the app.
-* The app uses the `palettes` package ( `require('users/gena/packages:palettes')` ) for color palettes.
 
-**Author:**
+**Authors:**
 
-Vinícius Vieira Mesquita - vieiramesquita@gmail.com
-
-**License:**
-
-[Specify the license of your project here]
-
-
-**Example visualization:**
-
-[Insert an image of your app here]
+Tharles de Sousa Andrade - irtharles@gmail.com | 
+Jairo Matos da Rocha - devjairomr@gmail.com | Maria O'Healy Hunter - maria.hunter@ufg.br |  Vinícius Vieira Mesquita - vieiramesquita@gmail.com
