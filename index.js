@@ -1,34 +1,9 @@
-// Importar funções de outros arquivos
-var customUi = require("users/irtharles/gpw-view-tool:ui.js");
-var map = require("users/irtharles/gpw-view-tool:map.js");
-var layers = require("users/irtharles/gpw-view-tool:layers.js");
-
-// Carregar as imagens
-var LAYERS = layers.LAYERS;
-
 /**
- * Adiciona as camadas ao mapa.
- * @param {ui.Map} mapLayer - O mapa onde as camadas serão adicionadas.
- */
-function addLayersToMap(mapLayer) {
-  LAYERS.forEach(function (layer) {
-    mapLayer.addLayer(
-      layer.imagem,
-      {
-        palette: layer.palette,
-        bands: layer.bands.length > 0 ? layer.bands : null,
-      },
-      layer.layerName,
-      layer.visible
-    );
-  });
-}
-
-/**
- * Cria um painel de inspeção que mostra o nome das classes ao clicar no mapa.
+ * Cria um painel de inspeção que mostra o nome das classes ao clicar no mapa e adiciona histogramas.
  * @param {ui.Map} mapLayer - O mapa no qual configurar o evento de clique.
+ * @param {ui.Panel} histogramPanel - O painel de histogramas onde os histogramas serão adicionados.
  */
-function createInspector(mapLayer) {
+function createInspector(mapLayer, histogramPanel) {
   var inspector = ui.Panel([ui.Label("Click to get class names")]);
   inspector.style().set({
     fontSize: "50",
@@ -51,17 +26,26 @@ function createInspector(mapLayer) {
 
     var point = ee.Geometry.Point(coords.lon, coords.lat);
     
+    // Adicionar ponto selecionado ao mapa
     mapLayer.layers().set(
       4,
       ui.Map.Layer(point, { color: "blue" }, "Selected Point")
     );
 
+    // Limpar o painel de histogramas antes de adicionar novos histogramas
+    histogramPanel.clear();
+    histogramPanel.add(ui.Label('Histogram Panel', { 
+      fontSize: '20px', 
+      fontWeight: 'bold', 
+      textAlign: 'center' 
+    }));
+
+    // Iterar sobre cada camada para amostrar o ponto e gerar histogramas
     LAYERS.forEach(function (layer, index) {
       var sample = layer.imagem.sample(point, 30);
       var value = sample.first().get(layer.bands[0] || "default_band");
 
       value.evaluate(function (result) {
-        print(result);
         var className = layer.imagemDictDataset[result] || "Unknown";
         inspector.widgets().set(
           index + 1,
@@ -70,6 +54,39 @@ function createInspector(mapLayer) {
             style: { color: "black" },
           })
         );
+      });
+
+      // Criar histogramas para as camadas no ponto selecionado
+      var region = point.buffer(100); // Buffer de 100 metros para gerar um histograma mais representativo
+      var histogram = layer.imagem.reduceRegion({
+        reducer: ee.Reducer.histogram(),
+        geometry: region,
+        scale: 30,
+        maxPixels: 1e8,
+      });
+
+      histogram.evaluate(function (histogramData) {
+        if (histogramData && histogramData[layer.bands[0]]) {
+          var hist = ui.Chart.array.values(
+            histogramData[layer.bands[0]].histogram,
+            0,
+            histogramData[layer.bands[0]].bucketMeans
+          ).setOptions({
+            title: 'Histogram for ' + layer.layerName,
+            hAxis: { title: 'Value' },
+            vAxis: { title: 'Frequency' },
+            series: {
+              0: { color: 'blue' },
+            },
+          });
+
+          histogramPanel.add(hist);
+        } else {
+          histogramPanel.add(ui.Label({
+            value: 'No histogram data for ' + layer.layerName,
+            style: { color: 'red' }
+          }));
+        }
       });
     });
 
@@ -82,29 +99,6 @@ function createInspector(mapLayer) {
   });
 
   return inspector;
-}
-
-/**
- * Cria o painel de histogramas que será adicionado ao rodapé da página.
- * @return {ui.Panel} O painel de histogramas.
- */
-function createHistogramPanel() {
-  var histogramPanel = ui.Panel({
-    layout: ui.Panel.Layout.Flow('vertical'),
-    style: {
-      width: '100%',
-      padding: '10px',
-      backgroundColor: 'rgba(255, 255, 255, 0.9)',
-    },
-  });
-
-  histogramPanel.add(ui.Label('Histogram Panel', { 
-    fontSize: '20px', 
-    fontWeight: 'bold', 
-    textAlign: 'center' 
-  }));
-
-  return histogramPanel;
 }
 
 /**
@@ -141,7 +135,7 @@ function initializeApp() {
   ui.root.add(mapGrid);
 
   // Adicionar o painel de inspeção ao mapa
-  createInspector(mapLayer);
+  createInspector(mapLayer, histogramPanel);
 }
 
 // Inicializar o app
