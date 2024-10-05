@@ -215,7 +215,7 @@ exports.createLegendPanel = function (legends) {
  * @return {ui.Panel} O painel com o mapa e o painel de controle.
  */
 exports.createMapGrid = function (map, panel) {
-  return ui.Panel([map, panel], ui.Panel.Layout.Flow("horizontal"), {
+  return ui.Panel([map, panel], ui.Panel.Layout.Flow("vertical"), {
     stretch: "both",
     height: "100%",
     width: "100%",
