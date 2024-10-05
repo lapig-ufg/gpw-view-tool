@@ -144,7 +144,7 @@ function initializeApp() {
     style: {
       stretch: 'both',
       width: '100%',
-      height: '100%',
+      height: '80vh',
     },
   });
 
