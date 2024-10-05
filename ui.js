@@ -206,7 +206,7 @@ exports.createLegendPanel = function (legends) {
     widgets: legends,
     layout: ui.Panel.Layout.Flow("vertical"),
   });
-  panel.style().set('height', '50vh');
+  panel.style().set('height', '40vh');
   return panel;
 };
 
@@ -219,7 +219,7 @@ exports.createLegendPanel = function (legends) {
 exports.createMapGrid = function (map, panel) {
   return ui.Panel([map, panel], ui.Panel.Layout.Flow("horizontal"), {
     stretch: "both",
-    height: "100%",
+    height: "80v",
     width: "100%",
   });
 };
