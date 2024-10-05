@@ -75,7 +75,6 @@ exports.createControlPanel = function (map) {
     fontSize: "25",
     fontWeight: "bold",
     textAlign: "left",
-    width: "100%",
     padding: "5px 0px 0px 0%",
   });
 
@@ -103,7 +102,7 @@ exports.createControlPanel = function (map) {
 
   var region_Panel = ui.Panel([labelRegion, select_regions, button_region]);
   region_Panel.style().set({
-    width: "90%",
+    width: "100%",
   })
   // Criar o painel principal
   var MainPanel = ui.Panel(
