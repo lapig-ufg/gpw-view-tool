@@ -17,8 +17,7 @@ exports.createControlPanel = function (map) {
     image: logo,
     params: { bands: ["b1", "b2", "b3"], min: 0, max: 255 },
     style: {
-      margin: "0px 0px 0px 25%",
-      padding: "10px",
+      margin: "10px 0px 0px 20%",
     },
   });
 
