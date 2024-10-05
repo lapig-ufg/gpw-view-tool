@@ -43,11 +43,12 @@ exports.createControlPanel = function (map) {
   var layerPanels = [];
 
   LAYERS.forEach(function (layer, index) {
+    // Create a checkbox for the layer
     var checkbox = ui.Checkbox(layer.layerName, layer.visible);
     checkbox.onChange(function (checked) {
       map.layers().get(index).setShown(checked);
     });
-
+  
     var slider = ui.Slider({
       min: 0,
       max: 100,
@@ -57,15 +58,26 @@ exports.createControlPanel = function (map) {
         var opacity = value / 100.0;
         map.layers().get(index).setOpacity(opacity);
       },
-      style: { width: "95%" },
+      style: { width: "100px" },
     });
-
-    // Criar painel para cada camada (checkbox + slider)
+  
+    var checkboxPanel = ui.Panel({
+      widgets: [checkbox],
+      style: {
+        stretch: 'horizontal',
+      },
+    });
+  
     var layerPanel = ui.Panel({
-      widgets: [checkbox, slider],
-      layout: ui.Panel.Layout.Flow("vertical"),
+      widgets: [checkboxPanel, slider],
+      layout: ui.Panel.Layout.Flow('horizontal'),
+      style: {
+        width: '100%',
+        alignItems: 'center', 
+        justifyContent: 'space-between',
+      },
     });
-
+  
     layerPanels.push(layerPanel);
   });
 
