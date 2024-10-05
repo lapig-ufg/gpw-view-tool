@@ -92,6 +92,7 @@ function createHistogramPanel() {
   var histogramPanel = ui.Panel({
     layout: ui.Panel.Layout.Flow('vertical'),
     style: {
+      position: 'bottom',
       width: '100%',
       padding: '10px',
       backgroundColor: 'rgba(255, 255, 255, 0.9)',
@@ -143,7 +144,7 @@ function initializeApp() {
     style: {
       stretch: 'both',
       width: '100%',
-      height: '80vh',
+      height: '100%',
     },
   });
 
