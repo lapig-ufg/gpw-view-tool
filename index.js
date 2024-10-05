@@ -61,11 +61,6 @@ function createInspector(mapLayer, histogramPanel) {
 
     // Limpar o painel de histogramas antes de adicionar novos histogramas
     histogramPanel.clear();
-    histogramPanel.add(ui.Label('Histogram Panel', { 
-      fontSize: '20px', 
-      fontWeight: 'bold', 
-      textAlign: 'center' 
-    }));
 
     // Iterar sobre cada camada para amostrar o ponto e gerar histogramas
     LAYERS.forEach(function (layer, index) {
@@ -137,7 +132,7 @@ function createHistogramPanel() {
   var histogramPanel = ui.Panel({
     layout: ui.Panel.Layout.Flow('horizontal'),
     style: {
-      width: '78%',
+      width: '100%',
       padding: '10px',
       backgroundColor: 'rgba(255, 255, 255, 0.9)',
     },
