@@ -130,6 +130,7 @@ exports.createControlPanel = function (map) {
     {
       width: "22%",
       position: "top-right",
+      height: "80hv",
     }
   );
 
@@ -219,7 +220,7 @@ exports.createLegendPanel = function (legends) {
 exports.createMapGrid = function (map, panel) {
   return ui.Panel([map, panel], ui.Panel.Layout.Flow("horizontal"), {
     stretch: "both",
-    height: "80v",
+    height: "100%",
     width: "100%",
   });
 };
