@@ -83,11 +83,12 @@ exports.createControlPanel = function (map) {
     {
       items: Object.keys(_map.core_regions),
       value: "Cocalinho, Mato Grosso, Brazil",
-    },
-    {
-      width: "100%",
     }
   );
+
+  select_regions.style().set({
+    width: "100%",
+  })
 
   var button_region = ui.Button({
     label: "Center to region",
