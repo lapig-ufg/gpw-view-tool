@@ -91,9 +91,10 @@ exports.createControlPanel = function (map) {
   })
 
   var button_region = ui.Button({
-    label: "Center to region",
+    label: "CENTER TO REGION",
     style: {
       width: "100%",
+      backgroundColor: "#006400",
     },
     onClick: function () {
       var coords = _map.core_regions[select_regions.getValue()];
