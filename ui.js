@@ -102,7 +102,9 @@ exports.createControlPanel = function (map) {
   });
 
   var region_Panel = ui.Panel([labelRegion, select_regions, button_region]);
-
+  region_Panel.style().set({
+    width: "90%",
+  })
   // Criar o painel principal
   var MainPanel = ui.Panel(
     [
