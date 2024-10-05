@@ -50,6 +50,7 @@ function createInspector(mapLayer) {
     );
 
     var point = ee.Geometry.Point(coords.lon, coords.lat);
+    
     mapLayer.layers().set(
       4,
       ui.Map.Layer(point, { color: "blue" }, "Selected Point")

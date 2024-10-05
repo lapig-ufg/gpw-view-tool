@@ -73,6 +73,7 @@ exports.createControlPanel = function(map) {
         fontSize: '25',
         fontWeight: 'bold',
         textAlign: 'left',
+        width: '100%',
         padding: '5px 0px 0px 0%'
     });
 
@@ -83,6 +84,9 @@ exports.createControlPanel = function(map) {
 
     var button_region = ui.Button({
         label: 'Center to region',
+        style:{
+            width: '100%'
+        },
         onClick: function() {
             var coords = _map.core_regions[select_regions.getValue()];
             map.setCenter(coords[0], coords[1], coords[2]);
