@@ -49,6 +49,7 @@ exports.createControlPanel = function (map) {
       map.layers().get(index).setShown(checked);
     });
   
+    // Create a slider to control the opacity
     var slider = ui.Slider({
       min: 0,
       max: 100,
@@ -58,24 +59,26 @@ exports.createControlPanel = function (map) {
         var opacity = value / 100.0;
         map.layers().get(index).setOpacity(opacity);
       },
-      style: { width: "100px" },
+      style: { width: '100px' },
     });
   
+    // Create a panel for the checkbox with horizontal stretching
     var checkboxPanel = ui.Panel({
       widgets: [checkbox],
-      style: {
-        stretch: 'horizontal',
-      },
+      style: { stretch: 'horizontal' },
     });
   
+    // Create a panel for the slider to keep it aligned to the right
+    var sliderPanel = ui.Panel({
+      widgets: [slider],
+      style: {},
+    });
+  
+    // Create a layer panel to contain the checkbox and slider panels
     var layerPanel = ui.Panel({
-      widgets: [checkboxPanel, slider],
+      widgets: [checkboxPanel, sliderPanel],
       layout: ui.Panel.Layout.Flow('horizontal'),
-      style: {
-        width: '100%',
-        alignItems: 'center', 
-        justifyContent: 'space-between',
-      },
+      style: { width: '100%' },
     });
   
     layerPanels.push(layerPanel);
