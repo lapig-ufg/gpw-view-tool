@@ -5,6 +5,26 @@ var layers = require("users/irtharles/gpw-view-tool:layers.js");
 // Carregar as imagens
 var LAYERS = layers.LAYERS;
 
+
+/**
+ * Adiciona as camadas ao mapa.
+ * @param {ui.Map} mapLayer - O mapa onde as camadas serão adicionadas.
+ */
+function addLayersToMap(mapLayer) {
+  LAYERS.forEach(function (layer) {
+    mapLayer.addLayer(
+      layer.imagem,
+      {
+        palette: layer.palette,
+        bands: layer.bands.length > 0 ? layer.bands : null,
+      },
+      layer.layerName,
+      layer.visible
+    );
+  });
+}
+
+
 /**
  * Cria um painel de inspeção que mostra o nome das classes ao clicar no mapa e adiciona histogramas.
  * @param {ui.Map} mapLayer - O mapa no qual configurar o evento de clique.
