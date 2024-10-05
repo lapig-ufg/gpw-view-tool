@@ -63,7 +63,7 @@ exports.createControlPanel = function (map) {
     // Criar painel para cada camada (checkbox + slider)
     var layerPanel = ui.Panel({
       widgets: [checkbox, slider],
-      layout: ui.Panel.Layout.Flow("horizontal"),
+      layout: ui.Panel.Layout.Flow("vertical"),
     });
 
     layerPanels.push(layerPanel);
